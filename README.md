@@ -34,4 +34,4 @@ Streamlit: For building an interactive web application.
 Have questions or feedback? Feel free to reach out!
 
 Email: krishnakishoregedela@gmail.com
-GitHub: 
+GitHub: https://github.com/Krishna598-DS
