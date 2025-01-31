@@ -60,7 +60,7 @@ with st.container():
             host="localhost",
             user="root",
             password="123456789",  # Update with your database password
-            database="Krishna"  # Update with your database name
+            database="Redbus_data"  # Update with your database name
         )
         mycursor = mydb.cursor()
 
@@ -72,8 +72,8 @@ with st.container():
 
         # Clean and process the data
         table['seats_available'] = pd.to_numeric(table['seats_available'], errors='coerce', downcast='integer')
-        table['star_ratings'] = table['star_ratings'].astype(float).round(0).astype('Int64')  # Remove decimal in star ratings
-        table['price'] = table['price'].astype(float).round(0).astype('Int64')  # Remove decimal in price
+        table['star_ratings'] = table['star_ratings'].round(0).astype('Int64')  # Remove decimal in star ratings
+        table['price'] = table['price'].round(0).astype('Int64')  # Remove decimal in price
         table['duration'] = table['duration'].str.replace(r'(\d)(?=\D)', r'\1 ', regex=True)  # Format duration
 
         # State selection
@@ -116,7 +116,7 @@ with st.container():
                         # Show details of the selected bus
                         if st.button(f"Show {bus_selected} Bus Details"):
                             bus_details = filtered_buses[filtered_buses["busname"] == bus_selected][
-                                ["bustype", "departing_time","arrival_time", "duration", "star_ratings", "price", "seats_available"]
+                                ["bustype", "departing_time", "duration", "star_ratings", "price", "category"]
                             ]
                             st.markdown("<h3>Bus Details:</h3>", unsafe_allow_html=True)
                             st.table(bus_details)
